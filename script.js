@@ -1,14 +1,12 @@
-function MyController($scope) {
-  
-  var updateClock = function() {
-    $scope.clock = {
-      now: new Date()
-    }
-  };
+app = angular.module("Myapp", []);
 
-  setInterval(function() {
-    $scope.$apply(updateClock);
-  }, 1000);
-  
-  updateClock();
-};
+app.controller('ParentController', function($scope) {
+  $scope.person = {greeted: false};
+});
+
+app.controller('ChildController', function($scope) {
+  $scope.sayHello = function() {
+    $scope.person.name = "Ari Lerner";
+    $scope.person.greeted = true;
+  }
+});

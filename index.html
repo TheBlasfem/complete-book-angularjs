@@ -6,9 +6,12 @@
 	<script src="angular.min.js"></script>
 	<script src="script.js"></script>
 </head>
-<body ng-app>
-	<div ng-controller="MyController">
-		{{clock.now}}
+<body ng-app="Myapp">
+	<div ng-controller="ParentController">
+		<div ng-controller="ChildController">
+			<a ng-click="sayHello()">Say hello</a>
+		</div>
+		{{ person }}
 	</div>
 </body>
 </html>
