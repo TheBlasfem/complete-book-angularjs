@@ -5,13 +5,49 @@
 	<title>Demo Complete Book on AngularJS</title>
 	<script src="angular.min.js"></script>
 	<script src="script.js"></script>
+	<style>
+	input.ng-invalid {
+  border: 1px solid red;
+}
+input.ng-valid {
+  border: 1px solid green;
+}</style>
 </head>
 <body ng-app="Myapp">
 	<div ng-controller="ParentController">
-		<div ng-controller="ChildController">
-			<a ng-click="sayHello()">Say hello</a>
-		</div>
-		{{ person }}
+		<form name="signup_form" novalidate ng-submit="signupForm()">
+		  <fieldset>
+		    <legend>Signup</legend>
+				<div class="row">
+				  <div class="large-12 columns">
+				    <label>Your name</label>
+				    <input type="text" 
+				        placeholder="Name" 
+				        name="name" 
+				        ng-model="signup.name" 
+				        ng-minlength=3 
+				        ng-maxlength=20 required />
+				   <div class="error" 
+				        ng-show="signup_form.name.$dirty && signup_form.name.$invalid">
+				    <small class="error" 
+				        ng-show="signup_form.name.$error.required">
+				        Your name is required.
+				    </small>
+				    <small class="error" 
+				            ng-show="signup_form.name.$error.minlength">
+				            Your name is required to be at least 3 characters
+				    </small>
+				    <small class="error" 
+				            ng-show="signup_form.name.$error.maxlength">
+				            Your name cannot be longer than 20 characters
+				    </small>
+				  </div>
+				  </div>
+				</div>
+				</div>
+		    <button type="submit" class="button radius">Submit</button>
+		  </fieldset>
+		</form>
 	</div>
 </body>
 </html>
