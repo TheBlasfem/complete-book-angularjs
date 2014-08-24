@@ -1,5 +1,17 @@
-app = angular.module("Myapp", []);
-
-app.controller('ParentController', function($scope) {
-	
-});
+angular.module('myApp', [])
+    .directive('myDirective', function() {
+      return {
+        restrict: 'A',
+        scope: {
+          myUrl: '=someAttr',
+          myLinkText: '@'
+        },
+        template: '\
+          <div>\
+            <label>My Url Field:</label>\
+            <input type="text" ng-model="myUrl" />\
+            <a href="{{myUrl}}">{{myLinkText}}</a>\
+          </div>\
+        '
+      }
+    })
